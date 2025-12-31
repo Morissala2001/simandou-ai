@@ -31,8 +31,8 @@ def _render_auth_section(auth_manager):
                 auth_manager.login(login_user, login_pass)
 
     with tab_signup:
-        signup_user = st.text_input("Nouveau nom d'utilisateur", key="signup_user")
-        signup_pass = st.text_input("Nouveau mot de passe", type="password", key="signup_pass")
+        signup_user = st.text_input("Nom d'utilisateur", key="signup_user")
+        signup_pass = st.text_input("Mot de passe", type="password", key="signup_pass")
         st.caption("Question de sécurité (pour la récupération) :")
         security_q_index = st.selectbox(
             "Choisir une question",
@@ -103,7 +103,7 @@ def _render_logged_in_sidebar(auth_manager, chat_handler, request_counter):
         request_counter.display_counter(st.session_state.username, position="sidebar")
 
     # Bouton nouvelle discussion
-    if st.button("➕ Nouvelle Discussion", use_container_width=True):
+    if st.button("➕ Nouvelle conversation", use_container_width=True):
         chat_handler.archive_and_start_new_chat(st.session_state.username)
         st.rerun()
 
@@ -161,7 +161,7 @@ def _render_data_import_section():
             label_visibility="collapsed"
         )
         if uploaded_file:
-            if st.button("🚀 Analyser le fichier", use_container_width=True, key="btn_analyze_file"):
+            if st.button("🧠 Analyser le fichier", use_container_width=True, key="btn_analyze_file"):
                 with st.spinner("Traitement du fichier..."):
                     processor = FileProcessor()
                     result = processor.process_uploaded_file(uploaded_file)
@@ -270,10 +270,6 @@ def _render_premium_section(database):
         user_data = database.get_user(st.session_state.username)
         account_type = user_data.get('account_type', 'free') if user_data else 'free'
 
-        # Afficher les statistiques
-        # if st.session_state.user_stats:
-        #     stats = st.session_state.user_stats
-        #     st.metric("Archives", stats.get('archive_count', 0))
 
         if account_type == 'free':
             # can_request, max_requests, current_count = database.check_and_update_requests(
@@ -282,10 +278,10 @@ def _render_premium_section(database):
             # st.warning(f"Version **Gratuite** ({current_count}/{max_requests} requêtes/jour).")
             st.markdown("Passez au Premium pour :")
             st.markdown("""
-            * Requêtes illimitées.
-            * Priorité d'exécution.
-            * Support étendu.
-            * Historique illimité.
+             * ✅ Requêtes illimitées.
+             * ⚡  Priorité d'exécution.
+             * 🛡️ Support étendu.
+             * 🔓 Premium = Tout débloqué
             """)
             if st.button("Passer au Premium", key="btn_premium", use_container_width=True):
                 database.update_account_type(st.session_state.username, 'premium')

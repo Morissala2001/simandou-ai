@@ -182,7 +182,7 @@ if is_session_valid and st.session_state.chat_session is None:
 
 def _render_chat_interface():
     """Affiche l'interface de chat sans informations techniques"""
-    st.title("🤖 Assistant Simandou-gn-ia")
+    #st.title("🤖 Assistant Simandou-gn-ia")
 
     # Affichage du nom d'utilisateur seulement
     if st.session_state.username:
@@ -231,20 +231,20 @@ def _render_chat_interface():
 def _render_settings_interface():
     """Affiche l'interface des paramètres sans détails techniques"""
     st.header("Paramètres")
-
-    # Option d'export
-    st.subheader("Export des données")
-    if st.button("Exporter les archives", use_container_width=True):
-        if hasattr(db, 'export_to_json'):
-            data = db.export_to_json(st.session_state.username)
-            filename = f"archives_{st.session_state.username}_{datetime.now().strftime('%Y%m%d')}.json"
-
-            st.download_button(
-                label="Télécharger",
-                data=data,
-                file_name=filename,
-                mime="application/json"
-            )
+#
+#     # Option d'export
+#     st.subheader("Export des données")
+#     if st.button("Exporter les archives", use_container_width=True):
+#         if hasattr(db, 'export_to_json'):
+#             data = db.export_to_json(st.session_state.username)
+#             filename = f"archives_{st.session_state.username}_{datetime.now().strftime('%Y%m%d')}.json"
+#
+#             st.download_button(
+#                 label="Télécharger",
+#                 data=data,
+#                 file_name=filename,
+#                 mime="application/json"
+#             )
 
 def render_main_interface():
     """Affiche l'interface principale"""
@@ -254,12 +254,12 @@ def render_main_interface():
 
     def render_archives():
         archive_manager.render_archive_management(st.session_state.username)
-
+ ##Les parametres
     def render_settings():
         _render_settings_interface()
 
     # Afficher les onglets
-    tab_manager.render_tabs(render_chat, render_archives, render_settings)
+    tab_manager.render_tabs(render_chat, render_archives,render_settings)
 
 
 # ============================================

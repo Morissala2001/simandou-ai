@@ -48,7 +48,7 @@ class RequestCounter:
         if count >= self.MAX_FREE_REQUESTS:
             st.warning("**Limite atteinte** - Revenez demain !")
 
-        st.caption(f"🕐 Réinitialisation dans **{hours}h{minutes}m**")
+        #st.caption(f"🕐 Réinitialisation dans **{hours}h{minutes}m**")
 
     def can_make_request(self, username):
         """Vérifie si une nouvelle requête peut être faite"""

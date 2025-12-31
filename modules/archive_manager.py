@@ -15,7 +15,7 @@ class ArchiveManager:
 
     def render_archive_management(self, username):
         """Affiche l'interface de gestion des archives avec chat"""
-        st.header("🗂️ Archives de Conversation")
+        st.header("🗂️ Archives de conversation")
 
         archives = self.db.get_user_archives(username, limit=100)
 
@@ -86,7 +86,7 @@ class ArchiveManager:
         st.markdown("### 💭 Poser une question sur cette conversation")
 
         # Afficher l'historique original
-        with st.expander("📜 Historique original de la conversation", expanded=True):
+        with st.expander("📜 Historique de la conversation", expanded=True):
             for msg in archive['history']:
                 avatar = "👤" if msg['role'] == 'user' else "🤖"
                 with st.chat_message(msg['role'], avatar=avatar):
@@ -215,7 +215,7 @@ class ArchiveManager:
                 # Pied de page
                 c.setFont("Helvetica-Oblique", 8)
                 c.drawString(50, 30, f"Généré le {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
-                c.drawString(50, 20, "Simandou-GN-IA - L'excellence IA made in Guinée")
+                c.drawString(50, 20, "Simandou-GN-IA - L'excellence IA made in Africa")
 
                 c.save()
 

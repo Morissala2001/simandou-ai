@@ -10,9 +10,8 @@ class AuthManager:
     # Questions de sécurité
     SECURITY_QUESTIONS = [
         "Quel est le nom de votre ville de naissance ?",
-        "Quel est le nom de votre premier animal de compagnie ?",
-        "Quel est le nom de jeune fille de votre mère ?",
         "Quel est votre film préféré ?",
+        "Quel est votre sport préféré ?",
         "Quelle est votre école primaire ?"
     ]
 
